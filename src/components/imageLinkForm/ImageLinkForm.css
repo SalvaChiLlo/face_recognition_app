@@ -1,0 +1,82 @@
+.imageLinkForm{
+    /* Distribution */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Margin and padding */
+    margin-top: 20px;
+    padding: 0;
+}
+
+.LinkForm{
+    /* Border */
+    border-radius: 20px;
+
+    /* Background */
+    background-color: rgba(0, 0, 0, 0.185);
+    box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.185);
+
+    /* Margin and Padding */
+    margin-top: 20px;
+    padding: 10px;
+
+    /* Size */
+    width: fit-content;
+    height: fit-content;
+
+    /* Distribution */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LinkForm input[type=text] {
+    /* Border */
+    border-radius: 20px 0px 0px 20px;
+    border: 0;
+
+    /* Size */
+    height: 30px;
+    width: 40vw;
+
+    /* Font */
+    font-size: large;
+    font-weight: bold;
+
+    /* Margin and Padding */
+    padding: 10px;
+}
+
+.LinkForm input[type=text]:focus, .LinkForm button:focus{
+    outline: none;
+}
+
+.LinkForm button {
+    /* Border */
+    border-radius: 0px 20px 20px 0px;
+    border: 0;
+
+    /* Size */
+    height: 30px;
+    width: 7vw;
+    min-width: fit-content;
+    /* Font */
+    font-size: large;
+    font-weight: bold;
+
+    /* Cursor */
+    cursor: pointer;
+
+    /* Background */
+    background-color: #EFEFEF;
+
+    /* Transitions */
+    transition: all 0.5s;
+}
+
+.LinkForm button:hover, .LinkForm input[type=text]:hover{
+    background-color: black;
+    color: white;
+}

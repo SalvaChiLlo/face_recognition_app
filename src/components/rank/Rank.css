@@ -1,0 +1,10 @@
+.rank h2{
+    /* Font style */
+    margin: 0;
+    font-size: 35px;
+}
+
+.rank h2:first-child{
+    margin-top: 20px;
+    font-size: 50px;
+}

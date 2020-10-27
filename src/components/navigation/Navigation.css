@@ -1,0 +1,18 @@
+nav {
+    /* Margin and padding */
+    padding: 15px;
+
+    /* Display styles */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* Overflow styles */
+    overflow: hidden;
+
+    /* Border */
+    border-bottom: 1px solid black;
+
+    /* Background */
+    background-color: rgba(0, 0, 0, 0.096);
+}
