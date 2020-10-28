@@ -88,3 +88,11 @@
     /* Font style */
     color: white;
 }
+
+.imageLinkForm img{
+    /* Margin and padding */
+    margin-top: 20px;
+
+    /* Size */
+    height: 60vh;
+}

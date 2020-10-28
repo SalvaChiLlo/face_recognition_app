@@ -8,6 +8,23 @@ import particlesConfig from './particlesjs-config.json'
 
 class App extends React.Component {
 
+  constructor(){
+    super();
+    this.state={
+      input:'',
+      imageLink: ''
+    }
+  }
+
+  onInputChange = (event) => {
+    this.setState({input: event.target.value})
+  }
+
+  onSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state.input)
+    this.setState({imageLink: this.state.input})
+  }
 
   render() {
     return (
@@ -15,7 +32,7 @@ class App extends React.Component {
         <Particles className="particles" params={particlesConfig}/>
         <Navigation />
         <Rank />
-        <ImageLinkForm />
+        <ImageLinkForm onInputChange={this.onInputChange} onSubmit={this.onSubmit} imageLink={this.state.imageLink}/>
         {/* <FaceRecognition /> */}
       </div>
     );
