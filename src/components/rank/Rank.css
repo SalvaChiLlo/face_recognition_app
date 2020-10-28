@@ -1,10 +1,16 @@
 .rank h2{
     /* Font style */
+    font-size: x-large;
+
+    /* Margin and padding */
     margin: 0;
-    font-size: 35px;
+    padding: 0;
 }
 
 .rank h2:first-child{
+    /* Font style */
+    font-size: xx-large;
+    
+    /* Margin and padding */
     margin-top: 20px;
-    font-size: 50px;
 }

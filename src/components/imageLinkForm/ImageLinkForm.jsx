@@ -4,7 +4,7 @@ import './ImageLinkForm.css';
 const ImageLinkForm = () => {
     return (
         <div className="imageLinkForm">
-            <p className="f3">
+            <p>
                 {`I am going to detect faces in your pictures!!!`}
             </p>
             <form className="LinkForm">

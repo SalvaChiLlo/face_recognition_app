@@ -10,9 +10,6 @@ nav {
     /* Overflow styles */
     overflow: hidden;
 
-    /* Border */
-    border-bottom: 1px solid black;
-
     /* Background */
-    background-color: rgba(0, 0, 0, 0.096);
+    background-color: rgba(168, 168, 168, 0.226);
 }

@@ -10,17 +10,22 @@
     padding: 0;
 }
 
+.imageLinkForm p{
+    /* Font style */
+    font-size: larger;
+}
+
 .LinkForm{
     /* Border */
     border-radius: 20px;
 
     /* Background */
-    background-color: rgba(0, 0, 0, 0.185);
-    box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.185);
+    background-color: transparent;
+    box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.185);
 
     /* Margin and Padding */
     margin-top: 20px;
-    padding: 10px;
+    padding: 0px;
 
     /* Size */
     width: fit-content;
@@ -77,6 +82,9 @@
 }
 
 .LinkForm button:hover, .LinkForm input[type=text]:hover{
+    /* Background */
     background-color: black;
+
+    /* Font style */
     color: white;
 }
