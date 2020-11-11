@@ -37,7 +37,7 @@
     align-items: center;
 }
 
-.LinkForm input[type=text] {
+.LinkForm input[type=search] {
     /* Border */
     border-radius: 20px 0px 0px 20px;
     border: 0;
@@ -54,7 +54,7 @@
     padding: 10px;
 }
 
-.LinkForm input[type=text]:focus, .LinkForm button:focus{
+.LinkForm input[type=search]:focus, .LinkForm button:focus{
     outline: none;
 }
 
