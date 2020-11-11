@@ -6,6 +6,7 @@ import Rank from './components/rank/Rank';
 import Particles from 'react-particles-js';
 import particlesConfig from './particlesjs-config.json';
 import FaceRecognition from './components/faceRecognition/FaceRecognition.jsx'
+import Signin from './components/signin/Signin';
 
 
 class App extends React.Component {
@@ -16,6 +17,7 @@ class App extends React.Component {
       input: '',
       imageLink: '',
       boxes: [],
+      route: 'signin'
     }
   }
 
@@ -29,7 +31,7 @@ class App extends React.Component {
     myHeaders.append("name", "salva");
     myHeaders.append("Content-Type", "application/json");
 
-    var raw = JSON.stringify({ "imageLink":  inputValue});
+    var raw = JSON.stringify({ "imageLink": inputValue });
 
     var requestOptions = {
       method: 'POST',
@@ -52,9 +54,15 @@ class App extends React.Component {
       <div className="App">
         <Particles className="particles" params={particlesConfig} />
         <Navigation />
-        <Rank />
-        <ImageLinkForm onSubmit={this.onSubmit} />
-        <FaceRecognition imageLink={this.state.imageLink} boxes={this.state.boxes} />
+        { this.state.route === 'signin' ?
+          <Signin />
+          :
+          <div>
+            <Rank />
+            <ImageLinkForm onSubmit={this.onSubmit} />
+            <FaceRecognition imageLink={this.state.imageLink} boxes={this.state.boxes} />
+          </div>
+        }
       </div>
     );
   }
