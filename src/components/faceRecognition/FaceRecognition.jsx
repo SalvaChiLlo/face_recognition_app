@@ -17,7 +17,6 @@ const FaceRecognition = ({ imageLink, boxes }) => {
             })
         })
     }
-    console.log(boxes)
     return (
         <div className="max">
             <div className="faceRecognition max">

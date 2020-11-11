@@ -67,10 +67,11 @@ class App extends React.Component {
   }
 
   render() {
+    const {isSignedIn, boxes, imageLink} = this.state;
     return (
       <div className="App">
         <Particles className="particles" params={particlesConfig} />
-        <Navigation onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn} />
+        <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn} />
         { this.state.route === 'signin' ?
           <Signin onRouteChange={this.onRouteChange} />
           : (
@@ -80,7 +81,7 @@ class App extends React.Component {
               <div>
                 <Rank />
                 <ImageLinkForm onSubmit={this.onSubmit} />
-                <FaceRecognition imageLink={this.state.imageLink} boxes={this.state.boxes} />
+                <FaceRecognition imageLink={imageLink} boxes={boxes} />
               </div>
           )
         }
