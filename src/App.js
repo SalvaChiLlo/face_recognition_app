@@ -19,8 +19,27 @@ class App extends React.Component {
       imageLink: '',
       boxes: [],
       route: 'signin',
-      isSignedIn: false
+      isSignedIn: false,
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined: ''
+      }
     }
+  }
+
+  loadUser = (data) => {
+    this.setState({
+      user: {
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        entries: data.entries,
+        joined: data.joined
+      }
+    })
   }
 
   onSubmit = (event) => {
@@ -33,10 +52,13 @@ class App extends React.Component {
     myHeaders.append("name", "salva");
     myHeaders.append("Content-Type", "application/json");
 
-    var raw = JSON.stringify({ "imageLink": inputValue });
+    var raw = JSON.stringify({
+      "imageLink": inputValue,
+      "id": this.state.user.id
+    });
 
     var requestOptions = {
-      method: 'POST',
+      method: 'PUT',
       headers: myHeaders,
       body: raw,
       redirect: 'follow'
@@ -45,18 +67,19 @@ class App extends React.Component {
     fetch("http://localhost:8000/getImage", requestOptions)
       .then(response => response.json())
       .then(result => {
-        this.setState({ boxes: result.outputs[0].data.regions })
+        this.loadUser(result[0])
+        this.setState({ boxes: result[1].outputs[0].data.regions })
       })
       .catch(error => console.log('error en la imagen', error));
 
   }
 
   onRouteChange = (route) => {
-    if(route === 'home') {
+    if (route === 'home') {
       this.setState({
         isSignedIn: true
       })
-    } else if( route === 'signin' || route === 'register') {
+    } else if (route === 'signin' || route === 'register') {
       this.setState({
         isSignedIn: false
       })
@@ -66,20 +89,27 @@ class App extends React.Component {
     })
   }
 
+  componentDidMount() {
+    fetch('http://localhost:8000')
+      .then(response => response.json())
+      .then(console.log)
+      .catch(err => console.log(err))
+  }
+
   render() {
-    const {isSignedIn, boxes, imageLink} = this.state;
+    const { isSignedIn, boxes, imageLink } = this.state;
     return (
       <div className="App">
         <Particles className="particles" params={particlesConfig} />
         <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn} />
         { this.state.route === 'signin' ?
-          <Signin onRouteChange={this.onRouteChange} />
+          <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
           : (
             this.state.route === 'register' ?
               <Register onRouteChange={this.onRouteChange} />
               :
               <div>
-                <Rank />
+                <Rank name={this.state.user.name} entries={this.state.user.entries} />
                 <ImageLinkForm onSubmit={this.onSubmit} />
                 <FaceRecognition imageLink={imageLink} boxes={boxes} />
               </div>
