@@ -81,6 +81,7 @@ class App extends React.Component {
       })
     } else if (route === 'signin' || route === 'register') {
       this.setState({
+        user: {},
         isSignedIn: false
       })
     }
@@ -106,7 +107,7 @@ class App extends React.Component {
           <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
           : (
             this.state.route === 'register' ?
-              <Register onRouteChange={this.onRouteChange} />
+              <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
               :
               <div>
                 <Rank name={this.state.user.name} entries={this.state.user.entries} />

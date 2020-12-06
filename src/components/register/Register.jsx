@@ -26,7 +26,7 @@ class Register extends React.Component {
 
     onSubmitRegister = (event) => {
         event.preventDefault();
-        const { onRouteChange } = this.props
+        const { onRouteChange, loadUser } = this.props
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -44,8 +44,10 @@ class Register extends React.Component {
         fetch("http://localhost:8000/register", requestOptions)
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 if (data.id) {
                     onRouteChange('home')
+                    loadUser(data)
                 }
             })
             .catch(err => console.log(err, 'error'))

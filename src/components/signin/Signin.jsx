@@ -7,7 +7,8 @@ class Signin extends React.Component {
         super()
         this.state = {
             signinEmail: '',
-            signinPassword: ''
+            signinPassword: '',
+            error: false
         }
     }
 
@@ -21,6 +22,7 @@ class Signin extends React.Component {
 
     onSubmitSingIn = (event) => {
         event.preventDefault();
+        console.log(this.state.signinEmail,this.state.signinPassword)
         const { onRouteChange, loadUser } = this.props
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -39,22 +41,30 @@ class Signin extends React.Component {
         fetch("http://localhost:8000/signin", requestOptions)
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 if (data.id) {
+                    this.setState({
+                        error: false
+                    })
                     loadUser(data)
                     onRouteChange('home')
+                } else {
+                    this.setState({
+                        error: true
+                    })
                 }
             })
     }
 
     render() {
-        const { onRouteChange } = this.props
+        const { onRouteChange, error } = this.props
         return (
             <main id="myForm" className="pa4 black-80 w-50 center bg-black-10">
                 <form onSubmit={(event) => this.onSubmitSingIn(event)} className="measure center">
                     <div id="sign_up" className="ba b--transparent ph0 mh0">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-
                             <legend className="f2 fw6 ph0 mh0">Sign In</legend>
+                            {error ? <h3>User or password not correct</h3> : <div></div>}
                             <div className="mt3">
                                 <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
                                 <input onChange={(event) => this.onEmailChange(event)} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address" id="email-address" />
