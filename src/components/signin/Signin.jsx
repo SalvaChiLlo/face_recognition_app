@@ -1,4 +1,5 @@
 import React from 'react';
+import { mainURL } from '../../environent';
 import './Signin.css';
 
 class Signin extends React.Component {
@@ -38,7 +39,7 @@ class Signin extends React.Component {
             body: data,
         };
 
-        fetch("http://localhost:8000/signin", requestOptions)
+        fetch(mainURL + "signin", requestOptions)
             .then(response => response.json())
             .then(data => {
                 console.log(data)

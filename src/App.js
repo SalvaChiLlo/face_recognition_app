@@ -8,6 +8,7 @@ import particlesConfig from './particlesjs-config.json';
 import FaceRecognition from './components/faceRecognition/FaceRecognition.jsx'
 import Signin from './components/signin/Signin';
 import Register from './components/register/Register';
+import { mainURL } from './environent';
 
 
 class App extends React.Component {
@@ -64,7 +65,7 @@ class App extends React.Component {
       redirect: 'follow'
     };
 
-    fetch("http://localhost:8000/getImage", requestOptions)
+    fetch(mainURL + "getImage", requestOptions)
       .then(response => response.json())
       .then(result => {
         this.loadUser(result[0])
@@ -91,7 +92,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8000')
+    fetch(mainURL)
       .then(response => response.json())
       .then(console.log)
       .catch(err => console.log(err))

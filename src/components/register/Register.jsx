@@ -1,4 +1,5 @@
 import React from 'react';
+import { mainURL } from '../../environent';
 import './Register.css';
 
 class Register extends React.Component {
@@ -41,7 +42,7 @@ class Register extends React.Component {
             headers: myHeaders,
             body: data,
         };
-        fetch("http://localhost:8000/register", requestOptions)
+        fetch(mainURL + "register", requestOptions)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
